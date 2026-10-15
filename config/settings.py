@@ -3,7 +3,7 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "dev-only-change-this-before-deployment"
 DEBUG = False
-ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", ".onrender.com"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
