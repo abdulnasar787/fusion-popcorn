@@ -1,0 +1,6 @@
+{% extends 'shop/base.html' %}
+{% block title %}{{ product.name }} | Fusion Popcorn{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container page-heading"><div class="breadcrumbs"><a href="{% url 'shop' %}">Shop</a> / {{ product.name }}</div><div class="eyebrow">Made for your cravings</div><h1>{{ product.name }}</h1><p>{{ product.description }}</p></div></section>
+<section class="section"><div class="container two-col"><div class="product-visual" style="min-height:360px;border-radius:24px;font-size:9rem">{{ product.emoji }}</div><div class="panel"><span class="pill">{{ product.tag }}</span><h2>{{ product.name }}</h2><p class="muted">{{ product.description }}</p><div class="price">₹{{ product.price }}</div><p>Freshly packed for a satisfying crunch. Great for movie nights, sharing, and snack breaks.</p><form method="post" action="{% url 'add_to_cart' product.slug %}">{% csrf_token %}<button class="btn" type="submit">Add to cart — ₹{{ product.price }}</button></form><p class="muted">Demo store: final stock, ingredients and delivery terms should be added before launch.</p></div></div></section>
+{% endblock %}

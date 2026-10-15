@@ -1,0 +1,6 @@
+{% extends 'shop/base.html' %}
+{% block title %}Shop All Flavours | Fusion Popcorn{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container page-heading"><div class="breadcrumbs">Home / Shop</div><div class="eyebrow">The flavour collection</div><h1>Find your perfect crunch.</h1><p>Sweet, savoury, classic or adventurous — there’s a popcorn for every mood.</p></div></section>
+<section class="section"><div class="container"><div class="grid">{% for p in products %}<article class="product-card"><a href="{% url 'product_detail' p.slug %}"><div class="product-visual"><span class="tag">{{ p.tag }}</span>{{ p.emoji }}</div></a><div class="product-info"><h3><a href="{% url 'product_detail' p.slug %}">{{ p.name }}</a></h3><p>{{ p.description }}</p><div class="price-row"><span class="price">₹{{ p.price }}</span><form method="post" action="{% url 'add_to_cart' p.slug %}">{% csrf_token %}<button class="tiny-btn" aria-label="Add to cart">+</button></form></div><p><a href="{% url 'product_detail' p.slug %}">View details →</a></p></div></article>{% endfor %}</div></div></section>
+{% endblock %}

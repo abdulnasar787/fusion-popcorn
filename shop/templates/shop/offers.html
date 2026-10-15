@@ -1,0 +1,6 @@
+{% extends 'shop/base.html' %}
+{% block title %}Combos & Offers | Fusion Popcorn{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container page-heading"><div class="breadcrumbs">Home / Combos & Offers</div><div class="eyebrow">More to share</div><h1>Make it a popcorn party.</h1><p>Hand-picked combos for cosy nights, family time and every celebration.</p></div></section>
+<section class="section"><div class="container"><div class="grid">{% for c in combos %}<article class="combo-card"><div class="product-visual">{{ c.emoji }}</div><div class="product-info"><span class="pill">COMBO PICK</span><h3>{{ c.name }}</h3><p>{{ c.description }}</p><div class="price-row"><span class="price">₹{{ c.price }}</span><form method="post" action="{% url 'add_to_cart' c.slug %}">{% csrf_token %}<button class="btn" type="submit">Add pack</button></form></div></div></article>{% endfor %}</div><p class="muted">Offer pricing is illustrative for this demo. Confirm your actual product bundles and prices before publishing.</p></div></section>
+{% endblock %}

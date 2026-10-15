@@ -1,0 +1,6 @@
+{% extends 'shop/base.html' %}
+{% block title %}Payment | Fusion Popcorn{% endblock %}
+{% block content %}
+<section class="page-hero"><div class="container page-heading"><div class="breadcrumbs">Home / Checkout / Payment</div><div class="eyebrow">Secure checkout setup</div><h1>Payment</h1><p>Order #{{ order.id }} is ready for payment integration.</p></div></section>
+<section class="section"><div class="container"><div class="panel" style="max-width:720px;margin:auto"><span class="pill">DEMO — NOT A LIVE PAYMENT</span><h2>Thanks, {{ order.customer_name }}.</h2><div class="summary-line"><span>Order total</span><strong class="price">₹{{ order.total_rupees|floatformat:2 }}</strong></div><p>Current order status: <strong>{{ order.get_status_display }}</strong></p><p class="muted">This page intentionally does not claim a payment was made. Connect Razorpay Test Mode with server-side order creation, signature verification and payment-status checks before enabling payment.</p><div class="safe-note">Do not collect card numbers, UPI PINs or banking passwords in your own form. Use the payment gateway's hosted checkout.</div><a class="btn" href="{% url 'shop' %}">Continue shopping</a> <a class="btn outline" href="{% url 'order_confirmation' order.id %}">View order summary</a></div></div></section>
+{% endblock %}

@@ -1,0 +1,45 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Fusion Popcorn — fresh, crunchy and delicious popcorn flavours.">
+  <title>{% block title %}Fusion Popcorn{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <div class="topbar">FRESH CRUNCH. BIG FLAVOUR. &nbsp; ✦ &nbsp; MADE FOR YOUR MOVIE MOMENTS</div>
+  <header class="navbar">
+    <a class="brand" href="{% url 'home' %}">🍿 FUSION <span>POPCORN</span></a>
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'shop' %}">Shop</a>
+      <a href="{% url 'offers' %}">Offers</a>
+      <a href="{% url 'about' %}">Our Story</a>
+      <a href="{% url 'gallery' %}">Gallery</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      <a class="cart-pill" href="{% url 'cart' %}">Cart ({{ cart_count|default:0 }})</a>
+    </nav>
+  </header>
+  {% if messages %}
+    <div class="container">
+      {% for message in messages %}
+        <div class="notice {{ message.tags }}" data-auto-dismiss>{{ message }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  <main>{% block content %}{% endblock %}</main>
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><a class="brand" href="{% url 'home' %}">🍿 FUSION <span>POPCORN</span></a><p>Big crunch. Bold flavours. Little moments made special.</p><p class="muted">A premium popcorn demo store.</p></div>
+        <div><h3>Explore</h3><a href="{% url 'shop' %}">Shop all flavours</a><a href="{% url 'offers' %}">Combos & offers</a><a href="{% url 'about' %}">Our story</a></div>
+        <div><h3>Need help?</h3><a href="{% url 'contact' %}">Contact us</a><a href="{% url 'contact' %}#faq">FAQs</a><a href="{% url 'cart' %}">Your cart</a></div>
+      </div>
+      <div class="footer-bottom">© 2026 Fusion Popcorn. Demo website — update contact and business details before launch.</div>
+    </div>
+  </footer>
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
