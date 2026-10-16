@@ -1,5 +1,5 @@
 {% extends 'shop/base.html' %}
-{% block title %}Order Summary | Fusion Popcorn{% endblock %}
+{% block title %}Order Summary | crunch & crush{% endblock %}
 {% block content %}
 <section class="page-hero"><div class="container page-heading"><div class="breadcrumbs">Home / Order summary</div><div class="eyebrow">Order details</div><h1>Order #{{ order.id }}</h1><p>Review the details saved for this demo order.</p></div></section>
 <section class="section"><div class="container"><div class="panel" style="max-width:760px;margin:auto"><div class="summary-line"><span>Customer</span><strong>{{ order.customer_name }}</strong></div><div class="summary-line"><span>Phone</span><strong>{{ order.phone }}</strong></div><div class="summary-line"><span>Delivery address</span><strong>{{ order.address }}</strong></div><h3>Items</h3>{% for item in order.items_json %}<div class="summary-line"><span>{{ item.name }} × {{ item.qty }}</span><strong>₹{{ item.price }}</strong></div>{% endfor %}<div class="summary-line summary-total"><span>Total</span><span>₹{{ order.total_rupees|floatformat:2 }}</span></div><div class="notice">Payment status: {{ order.get_status_display }}. This is not proof of payment.</div><a class="btn" href="{% url 'shop' %}">Back to shop</a></div></div></section>
